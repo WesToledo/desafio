@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "dev": "dotenv -- turbo dev",
+    "build": "dotenv -- turbo run build",
+    "start:prod": "node apps/api/dist/main",
+    "start:services": "docker-compose up -d && npm run prisma:init && npm run prisma:migration",
+    "prisma:init": "npx dotenv -- prisma generate",
+    "prisma:migration": "npx dotenv -- prisma migrate dev --schema=./apps/api/prisma/schema.prisma",
+    "docker:build": "docker build -t scrapper-pdf .",
+    "docker:run": "docker run -d -p 3000:80 scrapper-pdf"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.3.0",
+    "turbo": "^1.10.16"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "dependencies": {
+    "@nestjs/platform-ws": "^10.3.0",
+    "chart.js": "^4.4.1"
+  }
+}
