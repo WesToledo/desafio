@@ -19,10 +19,10 @@ export class CreateTransactionDTO {
 
   @IsDateString()
   @IsNotEmpty()
-  statusUpdateDate: string;
+  statusUpdateDate: Date;
 
   @IsDateString()
-  cancelDate: string;
+  cancelDate: Date | null;
 
   @IsNumber()
   @IsNotEmpty()
@@ -30,7 +30,7 @@ export class CreateTransactionDTO {
 
   @IsDateString()
   @IsNotEmpty()
-  nextCicle: string;
+  nextCicle: Date;
 
   @IsString()
   @IsNotEmpty()

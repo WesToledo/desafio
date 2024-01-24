@@ -11,13 +11,13 @@ datasource db {
 }
 
 model Transaction {
-  id               Int      @id @default(autoincrement())
+  id               Int       @id @default(autoincrement())
   billAmount       Int
   billInterval     Int
   dateInit         DateTime
   status           String
   statusUpdateDate DateTime
-  cancelDate       DateTime
+  cancelDate       DateTime?
   value            Float
   nextCicle        DateTime
   code             String

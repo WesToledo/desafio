@@ -6,8 +6,8 @@ import { CreateTransactionDTO } from './dto/transaction.dto';
 export class TransactionService {
   constructor(private prisma: PrismaService) {}
 
-  create(data: CreateTransactionDTO) {
-    return this.prisma.transaction.create({
+  createMany(data: CreateTransactionDTO[]) {
+    return this.prisma.transaction.createMany({
       data,
     });
   }

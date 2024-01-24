@@ -13,13 +13,13 @@ import { ResponseScript } from './upload.controller';
 export class UploadService {
   constructor(private transactionService: TransactionService) {}
 
-  async runOCRScript(filesNames: string[]) {
+  async runScript(filesNames: string[]) {
     function runPy() {
       return new Promise(async function (resolve, reject) {
         const options: Options = {
           mode: 'text',
           pythonOptions: ['-u'],
-          scriptPath: path.resolve(__dirname, '../../', 'src/scrapper'), //Path to your script
+          scriptPath: path.resolve(__dirname, '../../', 'src/reader'), //Path to your script
           args: [JSON.stringify(filesNames)], //Approach to send JSON as when I tried 'json' in mode I was getting error.
         };
 
@@ -43,46 +43,10 @@ export class UploadService {
       return new Promise(async function (resolve, reject) {
         const r = await runPy();
         const response = JSON.parse(JSON.stringify(r.toString()));
-        // console.log(JSON.parse(JSON.stringify(r.toString())));
         resolve(response);
       });
     }
 
     return runMain();
   }
-
-  // async computeData(response: ResponseScript[]) {
-  //   const s3 = new S3();
-  //   await Promise.all(
-  //     response.map(({ file_name, result }) => {
-  //       return new Promise(async function (resolve, reject) {
-  //         try {
-  //           const buffer = await fs.readFileSync(
-  //             path.resolve(__dirname, '../../', 'src/arquives', file_name),
-  //           );
-
-  //           const uploadResult = await s3
-  //             .upload({
-  //               Bucket: process.env.AWS_BUCKET_NAME,
-  //               Body: buffer,
-  //               Key: `${file_name}`,
-  //             })
-  //             .promise();
-
-  //           const {} = result;
-
-  //           // const storage = await service.create();
-
-  //           await fs.unlinkSync(
-  //             path.resolve(__dirname, '../../', 'src/arquives', file_name),
-  //           );
-  //         } catch (err) {
-  //           console.log(err);
-  //         }
-
-  //         resolve(1);
-  //       });
-  //     }),
-  //   );
-  // }
 }
