@@ -9,4 +9,14 @@ export class TransactionController {
   async list() {
     return await this.transactionService.list();
   }
+
+  @Get('/mrr')
+  async getMrr() {
+    return await this.transactionService.getMonthlyRecurringRevenue();
+  }
+
+  @Get('/churn')
+  async getChurn() {
+    return await this.transactionService.getChurn();
+  }
 }

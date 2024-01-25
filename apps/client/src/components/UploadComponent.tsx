@@ -19,9 +19,11 @@ import { AxiosProgressEvent } from "axios";
 import { PrimeReactProvider } from "primereact/api";
 import { FaFileUpload } from "react-icons/fa";
 import { api } from "../shared/api";
+import { useNavigate } from "react-router-dom";
 
 export default function UploadComponent() {
   const toast = useToast();
+  const navigate = useNavigate();
   const [totalSize, setTotalSize] = useState(0);
   const fileUploadRef = useRef<FileUpload>(null);
   const [files, setFiles] = useState<File[]>([]);
@@ -69,6 +71,8 @@ export default function UploadComponent() {
         status: "success",
         isClosable: true,
       });
+
+      navigate("/dashboard");
     } catch (err) {
       toast({
         title: "Erro ao fazer upload",
@@ -218,7 +222,6 @@ export default function UploadComponent() {
           name="demo[]"
           url="/api/upload"
           multiple
-
           accept="text/csv"
           maxFileSize={1000000}
           onUpload={onTemplateUpload}

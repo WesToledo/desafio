@@ -32,6 +32,7 @@
     "@prisma/client": "^5.7.1",
     "aws-sdk": "^2.1526.0",
     "class-validator": "^0.14.0",
+    "date-fns": "^3.3.1",
     "jszip": "^3.10.1",
     "python-shell": "^5.0.0",
     "reflect-metadata": "^0.1.13",

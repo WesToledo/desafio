@@ -6,6 +6,8 @@ Use [pip](https://pip.pypa.io/en/stable/) to install.
 
 ```bash
 
+pip install python-dateutil
+
 ```
 
 ## Project Instalation
@@ -23,5 +25,3 @@ Install with **npm**
   # Dev Mode
   npm run dev
 ```
-
-## Testing
