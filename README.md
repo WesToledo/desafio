@@ -31,4 +31,6 @@ Install with **npm**
 
 ## TO-DO
 
- - 
+ - Create automated tests
+ - Write a better documentation 
+ - Create validations for the extracted data from the .csv files.
