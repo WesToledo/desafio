@@ -10,7 +10,6 @@ import {
   HStack,
   Heading,
   Select,
-  Spinner,
   Stack,
   Text,
   useToast,
@@ -18,7 +17,6 @@ import {
 import { Chart } from "primereact/chart";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Page } from "../components/Page";
 import { api } from "../shared/api";
 import { getMonthNameByNumber } from "../shared/utils";
 
